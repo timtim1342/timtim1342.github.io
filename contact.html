@@ -27,7 +27,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
 <div class="main-image" style="background-image: url('images/mount2.JPG'); background-position: 0% 65%;">
   <div class="attrib">
-    ?, ? district
+    Fiy, Akhtynsky district
 	</div>
 </div>
 
@@ -76,7 +76,7 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
 
 
 
@@ -281,20 +281,39 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="about.html">About</a>
+  <a href="./about.html">About</a>
 </li>
-<li>
-  <a href="features.html">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-atlas"></span>
      
     Features
+     
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./topics.html">Major topics</a>
+    </li>
+    <li>
+      <a href="./features.html">Features</a>
+    </li>
+    <li>
+      <a href="./method.html">Method</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="references.html">References</a>
+  <a href="./changes.html">Changes</a>
 </li>
 <li>
-  <a href="contact.html">Contact</a>
+  <a href="./contact.html">Contact</a>
+</li>
+<li>
+  <a href="./references.html">References</a>
+</li>
+<li>
+  <a href="./acknow.html">Acknowledgement</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -314,10 +333,11 @@ $(document).ready(function () {
 
 
 <hr />
-<p>You can always contact us via email at <a href="mailto:cauatlas@gmail.com" class="email">cauatlas@gmail.com</a></p>
+<p>You can always contact us via email at <a href="mailto:cauatlas@gmail.com" class="email">cauatlas@gmail.com</a>.</p>
+<p>The feature datasets are stored on our <a href="">GitHub page</a>.</p>
 <hr />
 
-<p align='center'>Linguistic Convergence Laboratory, NRU HSE</p>
+<p align='center'>2019<script>new Date().getFullYear()>2019&&document.write("-"+new Date().getFullYear());</script>,  Linguistic Convergence Laboratory, NRU HSE</p>
 
 
 

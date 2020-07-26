@@ -76,7 +76,7 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
 
 
 
@@ -281,20 +281,39 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="about.html">About</a>
+  <a href="./about.html">About</a>
 </li>
-<li>
-  <a href="features.html">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-atlas"></span>
      
     Features
+     
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./topics.html">Major topics</a>
+    </li>
+    <li>
+      <a href="./features.html">Features</a>
+    </li>
+    <li>
+      <a href="./method.html">Method</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="references.html">References</a>
+  <a href="./changes.html">Changes</a>
 </li>
 <li>
-  <a href="contact.html">Contact</a>
+  <a href="./contact.html">Contact</a>
+</li>
+<li>
+  <a href="./references.html">References</a>
+</li>
+<li>
+  <a href="./acknow.html">Acknowledgement</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -317,7 +336,7 @@ $(document).ready(function () {
 <p>Languages of Daghestan have a long descriptive tradition. Available grammars contain a wealth of data which however have not been analyzed form an areal point of view. The goal of this project is to develop a tool for the visualization of information about linguistic structures characteristic of Daghestan. The atlas is based almost exclusively on data from published grammars, and can therefore be used for bibliographical research and as a source of references on parameters of interest. A key task of the project is the creation of maps and visualizations that allow us to combine metadata and genealogical parameters with information on a particular feature. This task presupposes the inventory and evaluation of available sources on grammatical information. Data from the Atlas can be used to formulate hypotheses about the area and scenarios for the distribution of certain phenomena. The Atlas will also allow a wider audience to become familiar with the linguistic diversity of Daghestan.</p>
 <hr />
 
-<p align='center'>Linguistic Convergence Laboratory, NRU HSE</p>
+<p align='center'>2019<script>new Date().getFullYear()>2019&&document.write("-"+new Date().getFullYear());</script>,  Linguistic Convergence Laboratory, NRU HSE</p>
 
 
 

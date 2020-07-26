@@ -19,9 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -96,7 +93,7 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
 
 
 
@@ -277,69 +274,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
 
 </head>
 
@@ -347,16 +281,6 @@ div.tocify {
 
 
 <div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -374,20 +298,39 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="about.html">About</a>
+  <a href="./about.html">About</a>
 </li>
-<li>
-  <a href="features.html">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-atlas"></span>
      
     Features
+     
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./topics.html">Major topics</a>
+    </li>
+    <li>
+      <a href="./features.html">Features</a>
+    </li>
+    <li>
+      <a href="./method.html">Method</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="references.html">References</a>
+  <a href="./changes.html">Changes</a>
 </li>
 <li>
-  <a href="contact.html">Contact</a>
+  <a href="./contact.html">Contact</a>
+</li>
+<li>
+  <a href="./references.html">References</a>
+</li>
+<li>
+  <a href="./acknow.html">Acknowledgement</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -405,8 +348,19 @@ div.tocify {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#a-bit-of-history">A bit of history</a></li>
+<li><a href="#tald-approach">TALD approach</a></li>
+<li><a href="#the-east-caucasian-villages-dataset">The East Caucasian villages dataset</a></li>
+<li><a href="#core-languages">Core languages</a></li>
+</ul>
+</div>
 
 <hr />
+<div id="a-bit-of-history" class="section level1">
+<h1>A bit of history</h1>
+</div>
 <div id="tald-approach" class="section level1">
 <h1>TALD approach</h1>
 <p>The idea of the Typological Atlas of Daghestan was to create a WALS-style resource for the languages of Daghestan and their neighbors. The WALS approach assigns one value for each linguistic feature to one language, which corresponds to one datapoint on the map.</p>
@@ -465,46 +419,17 @@ div.tocify {
 <h3>Table 5. First consonant of the word for ‘bridge’ (extended) with core / non-core marking</h3>
 <div id="htmlwidget-3660577fbd7cc21ad928" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-3660577fbd7cc21ad928">{"x":{"filter":"none","data":[[1,2,3,4,5,6,7,8],["Avar","Avar","Avar","Khwarshi","Khwarshi","Khwarshi","Khwarshi","Karata"],["Standard","Zaqatala","Kusur","Inkhoqwari","Kwantlada","Kwantlada","Khwarshi","Karata"],["idiom","idiom","village","idiom","idiom","idiom","idiom","village"],["yes","no","no","no","yes","no","no","yes"],["C-bridge","C-bridge","C-bridge","C-bridge","C-bridge","C-bridge","C-bridge","C-bridge"],["ƛ'","kːj","sː","t'","t'","t'","t'","ƛ'"],["ƛ'o","kːjo","sːo","t'iro","t'uro","t'ɨro","t'ero","ƛ'eru"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>id<\/th>\n      <th>lang<\/th>\n      <th>idiom<\/th>\n      <th>type<\/th>\n      <th>core<\/th>\n      <th>feature<\/th>\n      <th>value<\/th>\n      <th>form<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"searchable":false,"targets":0},{"className":"dt-right","targets":0}],"pageLength":10,"autoWidth":true,"dom":"","order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<div id="list-of-columns" class="section level1">
-<h1>List of columns</h1>
-<p><strong>id</strong> - unique number for each row / observation in dataset</p>
-<p><strong>lang</strong> - language name</p>
-<p><strong>idiom</strong> - a dialect, a village variety, or simply the standard language</p>
-<p><strong>type</strong> - specifies whether the idiom is a village variety (village) or something else (idiom)</p>
-<p><strong>core</strong> - specifies whether to use a certain value for mapping (see <a href="#core-languages">Core languages</a>)</p>
-<p><strong>feature</strong> - the name of the feature</p>
-<p><strong>value</strong> - the relevant values of the feature, e.g. attested/not attested</p>
-<p><strong>source</strong> - reference to the source</p>
-<p><strong>page</strong> - relevant page in the source</p>
-<p><strong>comment</strong> - any comment</p>
-<p><strong>contributor</strong> - the contributor’s name</p>
-<p><strong>form</strong> - a wordform or an affix for a phonetic or lexical feature (if applicable)</p>
-<p><strong>example_as_in_source</strong> - an example of how the form is used (if applicable)</p>
-<p><strong>example</strong> - example in Caucasiologist transcription with morpheme boundaries (if applicable)</p>
-<p><strong>translation_as_in_source</strong> - translation of the example</p>
-<p><strong>translation</strong> - the contributor’s English translation of the example</p>
-<p><strong>gloss</strong> - glosses for the example</p>
-<p><strong>example_source</strong> - reference to the source of the example</p>
-<p><strong>example_page</strong> - page reference for the example</p>
-<p><strong>example_comment</strong> - comments on the example</p>
-</div>
-<div id="map-visualization" class="section level1">
-<h1>Map visualization</h1>
-<p>For map visualizations we use the <a href="https://github.com/ropensci/lingtypology">Lingtypology</a> package for R.</p>
 <hr />
 <div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;">
 
 </div>
 <!-- remove extra whitespace at bottom produced by floating table of contents and plots. -->
 </div>
-
-<p align='center'>Linguistic Convergence Laboratory, NRU HSE</p>
-
-
 </div>
-</div>
+
+<p align='center'>2019<script>new Date().getFullYear()>2019&&document.write("-"+new Date().getFullYear());</script>,  Linguistic Convergence Laboratory, NRU HSE</p>
+
+
 
 </div>
 
@@ -537,32 +462,6 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

@@ -87,7 +87,7 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
 
 
 
@@ -292,20 +292,39 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="about.html">About</a>
+  <a href="./about.html">About</a>
 </li>
-<li>
-  <a href="features.html">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-atlas"></span>
      
     Features
+     
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./topics.html">Major topics</a>
+    </li>
+    <li>
+      <a href="./features.html">Features</a>
+    </li>
+    <li>
+      <a href="./method.html">Method</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="references.html">References</a>
+  <a href="./changes.html">Changes</a>
 </li>
 <li>
-  <a href="contact.html">Contact</a>
+  <a href="./contact.html">Contact</a>
+</li>
+<li>
+  <a href="./references.html">References</a>
+</li>
+<li>
+  <a href="./acknow.html">Acknowledgement</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -325,16 +344,11 @@ $(document).ready(function () {
 
 
 <hr />
-<div id="htmlwidget-e453cc8cb7415c9745c1" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e453cc8cb7415c9745c1">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"1\" data-max=\"10\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Morphology&quot;,&quot;Nominal Categories&quot;,&quot;Phonology&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[[1,2,3,4,5,6,7,8,9,10],["Inga Kartozia","Denis Arsentjev","Samira Verhees","George Moroz, Violetta Ivanova","George Moroz, Violetta Ivanova","George Moroz, Violetta Ivanova","George Moroz, Violetta Ivanova","George Moroz, Violetta Ivanova","Timofey Mukhin","Chiara Naccarato"],["Morphology","Morphology","Morphology","Phonology","Phonology","Phonology","Phonology","Phonology","Nominal Categories","Morphology"],["<a href=classes.html>Number of agreement classes<\/a>","<a href=affective.html>Presence of Affective<\/a>","<a href=evidentiality_tense.html>Evidentiality as part of the tense system<\/a>","<a href=gemination.html>Gemination<\/a>","<a href=laterals.html>System of laterals<\/a>","<a href=voiced_uvular.html>Presence of voiced uvular stop<\/a>","<a href=nasalization.html>Presence of nasalization<\/a>","<a href=pharyngealization.html>Presence of pharyngealization<\/a>","<a href=elevation.html>Elevation in the demonstrative system<\/a>","<a href=standard_of_comparison.html>Standard of comparison<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>id<\/th>\n      <th>authors<\/th>\n      <th>area<\/th>\n      <th>feature<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"searchable":false,"targets":0},{"className":"dt-right","targets":0}],"pageLength":10,"autoWidth":true,"dom":"fltpi","order":[],"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
-<div id="in-progress" class="section level1">
-<h1>In progress</h1>
-<div id="htmlwidget-25d1dd9979e6827100c5" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-25d1dd9979e6827100c5">{"x":{"filter":"none","data":[["Aigul Zakirova","Chiara Naccarato","Chiara Naccarato","Samira Verhees","Fyodor Golosov","Rita Popova"],["The use of an emphatic particle to form numerals and/or reflexive pronouns","Encoding of predicative possession (floating genitives, locative forms, etc.)","Permanent and temporary possession","Grammaticalization of FIND","General converbs","Class agreement slot in case paradigms"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>authors<\/th>\n      <th>title<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"searchable":false,"targets":0}],"pageLength":10,"autoWidth":true,"dom":"ltpi","order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6b8c4e08b4982e2f4a43" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6b8c4e08b4982e2f4a43">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"1\" data-max=\"12\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Morphology&quot;,&quot;Nominal Categories&quot;,&quot;Phonology&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n<\/tr>","data":[[1,2,3,4,5,6,7,8,9,10,11,12],["<a href=classes.html>Number of agreement classes<\/a>","<a href=affective.html>Presence of Affective<\/a>","<a href=evidentiality_tense.html>Evidentiality as part of the tense system<\/a>","<a href=gemination.html>Gemination<\/a>","<a href=laterals.html>System of laterals<\/a>","<a href=voiced_uvular.html>Presence of voiced uvular stop<\/a>","<a href=nasalization.html>Presence of nasalization<\/a>","<a href=pharyngealization.html>Presence of pharyngealization<\/a>","<a href=elevation.html>Elevation in the demonstrative system<\/a>","<a href=standard_of_comparison.html>Standard of comparison<\/a>","<a href=perfect.html>The perfect<\/a>","<a href=particles.html>Particles of reported speech and inference<\/a>"],["Inga Kartozia","Denis Arsentjev","Samira Verhees","George Moroz, Violetta Ivanova","George Moroz, Violetta Ivanova","George Moroz, Violetta Ivanova","George Moroz, Violetta Ivanova","George Moroz, Violetta Ivanova","Timofey Mukhin","Chiara Naccarato","Samira Verhees","Samira Verhees"],["","","<a href=evidentiality.html>Evidentiality<\/a>","","","","","","","","<a href=evidentiality.html>Evidentiality<\/a>","<a href=evidentiality.html>Evidentiality<\/a>"],["Morphology","Morphology","Morphology","Phonology","Phonology","Phonology","Phonology","Phonology","Nominal Categories","Morphology","Morphology","Morphology"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>id<\/th>\n      <th>feature<\/th>\n      <th>author<\/th>\n      <th>major_topic<\/th>\n      <th>area<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"searchable":false,"targets":0},{"className":"dt-right","targets":0}],"pageLength":10,"autoWidth":true,"dom":"ftpi","order":[],"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
 <hr />
-</div>
 
-<p align='center'>Linguistic Convergence Laboratory, NRU HSE</p>
+<p align='center'>2019<script>new Date().getFullYear()>2019&&document.write("-"+new Date().getFullYear());</script>,  Linguistic Convergence Laboratory, NRU HSE</p>
 
 
 
