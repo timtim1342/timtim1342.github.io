@@ -20,7 +20,8 @@
     }
     
 body {
-  font-size: 14pt; 
+  font-size: 14pt;
+  font-family: Charis SIL;
    }
    
 .gloss {
@@ -29,7 +30,7 @@ body {
 
 #htmlwidget-244aaddf2639520a3f5a{ /*карты на about. временное решение*/
   width: 100% !important;
-  height: 650px !important;
+  height: 700px !important;
 }
 
 #htmlwidget-6f66dca5431bfb50b4e6{
