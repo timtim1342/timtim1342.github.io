@@ -3,7 +3,7 @@ library(bib2df)
 library(stringi)
 
 # make as a function!
-lib <- read_tsv("./data/features/ref_tables/standard_of_comparison.csv")  # file from the drive ./data/biblib.csv
+lib <- read_tsv("./data/biblib.csv")  # file from the drive 
 
 # add eng_transl to title
 lib %>%
@@ -33,5 +33,6 @@ lib %>%
 #   mutate(title = t)-> lib
  
 
-df2bib(lib, "./data/features/ref_bibs/standard_of_comparison.bib")  # ./data/bibliography.bib
-write_tsv(lib, "./data/features/ref_tables/standard_of_comparison.csv")  # temporal solution ./data/biblib.csv
+df2bib(lib, "./data/bibliography.bib")
+write_tsv(lib, "./data/biblib.csv")  # temporal solution 
+

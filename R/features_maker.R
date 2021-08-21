@@ -3,100 +3,188 @@ library(tidyverse)
 library(lingtypology)
 library(DT)
 
-extr_map <- function(fe) {
-  vill <- read_csv("./data/villages.csv") # villages dataset
-  meta <- read_tsv("./data/meta.csv") # language metadata and colors
+data_prep <- function(fe){
+  # based on Samira's code
+  villages <- read_tsv("./data/tald_villages.csv") # villages dataset
   
-  # preparation of data
-  vill <- vill[complete.cases(vill$lat),] # remove villages for which we do not have coordinates (yet)
-  vill <- vill %>% 
-    filter(kutans == 'FALSE')  # убирает кутаны
+  # preparing data for ubiralka
   
-  meta_core <- meta %>% # remove idioms not (yet) recognized as distinct
-    filter(core == "yes")
+  # remove data not for mapping
   
-  vill_meta <- merge(vill, meta_core, by = "lang") # merge villages and coordinates with language metadata
-  vill_meta <- vill_meta %>% 
-    mutate(idiom = idiom.y)  # почему там два разных идиома?
+  fe <- fe[(fe$map == "yes"),]
   
-   fe_vill <- merge(vill_meta, fe, by = "lang") # merge villages, coordinates, and language metadata with feature information
-   fe_vill$datapoint <- "extrapolated datapoint"
+  # split feature data into dialect levels
+  # this returns a list of dataframes (ordered alphabetically :(), which you then split
   
+  # проблемы для автоматизации, я думаю, возникнут здесь: не во всех таблицах одинаковое количество types, у кого-то может быть, например, еще dialect_nt2, и получается 5 тайпов. Или, наоборот, может быть у кого-то только language, village, dialect_toplevel.
+  # Т: переделал grop_by в filter и добавил if в конце для nt1, которого может и не быть, а может быть
+  
+  fe_l <- fe %>% 
+    filter(fe$type == "language")
+  fe_tl <- fe %>% 
+    filter(fe$type == "dialect_toplevel")
+  fe_v <- fe %>% 
+    filter(fe$type == "village")
+  
+  # assign granularity level for each set
+  
+  fe_tl$granularity <- "toplevel dialect"
+  fe_v$granularity <- "village dialect"
+  fe_l$granularity <- "language"
+  
+  # merge feature data with villages dataset
+  
+  # create matching columns
+  
+  colnames(fe_tl)[colnames(fe_tl) == "idiom"] <- "dialect_toplevel"
+  colnames(fe_v)[colnames(fe_v) == "idiom"] <- "village_dialect"
+  colnames(fe_l)[colnames(fe_l) == "idiom"] <- "standard"
+  
+  # merge villages and data per level
+  
+  tlevel_villages <- merge(villages, fe_tl, by = "dialect_toplevel")
+  v_villages <- merge(villages, fe_v, by = "village_dialect")
+  lang_villages <- merge(villages, fe_l, by = "standard")
+  
+  # all above for nt1
+  if ('dialect_nt1' %in% fe$type) {
+    fe_nt1 <- fe %>% 
+      filter(fe$type == "dialect_nt1")
+    fe_nt1$granularity <- "non-toplevel 1 dialect"
+    colnames(fe_nt1)[colnames(fe_nt1) == "idiom"] <- "dialect_nt1"
+    nt1level_villages <- merge(villages, fe_nt1, by = "dialect_nt1")
+    
+    # merge the different levels with villages (in order high granularity (village) < low granularity (dialect_toplevel))
+    dialects_villages <- bind_rows(v_villages, nt1level_villages, tlevel_villages, lang_villages)
+  } else {
+    
+    # merge the different levels with villages (in order high granularity (village) < low granularity (dialect_toplevel))
+    dialects_villages <- bind_rows(v_villages, tlevel_villages, lang_villages)
+  }
+  
+  dialects_villages_clean <- dialects_villages[!duplicated(dialects_villages$village),]
+  
+  # isolate general language data
+  
+  fe_gl <- fe %>%
+    filter(genlang_point == "yes") %>%
+    mutate(granularity = "language") %>%
+    mutate(default_level = lang) %>%
+    select(-idiom)
+  
+  # merge feature data and village set
+  
+  glang_villages <- merge(villages, fe_gl, by = "default_level")
+  
+  # merge everything
+  
+  alldata <- bind_rows(dialects_villages_clean, glang_villages)
+  alldata_clean <- alldata[!duplicated(alldata$village),]
+  
+  # prepare data for simple maps
+  
+  # filter general language points
+  
+  fe_genlang <- fe %>%
+    filter(genlang_point == "yes")
+  
+  # check if each language has max 1 genlang point
+  
+  #table(duplicated(fe_genlang$lang))
+  
+  # merge villages, coordinates, and language metadata with feature information
+  
+  fe_vill <- merge(villages, fe_genlang, by = "lang") 
+  
+  fe_simple <- fe_vill %>%
+    filter(!duplicated(lang))
+  
+  
+  return_list <-list("alldata_clean"=alldata_clean, "fe_vill"=fe_vill, "fe_simple"=fe_simple)
+  
+  return(return_list)
+}
 
-  mp <- map.feature(lang.gltc(fe_vill$glottocode),
-                    latitude = fe_vill$lat,
+ubiralka_map <- function(fe) {  # карта с убиралкой
+  return_list <- data_prep(fe)
+  alldata_clean <- return_list$alldata_clean
+  
+  mp<- map.feature(lang.gltc(alldata_clean$gltc_lang),
+                   latitude = alldata_clean$lat,
+                   longitude = alldata_clean$lon,
+                   features = as.factor(alldata_clean$value),
+                   title = unique(alldata_clean$value_name),
+                   label = alldata_clean$lang.x,
+                   color = "magma",
+                   popup = paste(alldata_clean$village, "|", alldata_clean$rus_village, "<br>",
+                                 "data:", alldata_clean$granularity),
+                   control = alldata_clean$granularity,
+                   zoom.control = T)
+  
+  return(mp)
+}
+
+extr_map <- function(fe) {
+  return_list <- data_prep(fe)
+  fe_vill <- return_list$fe_vill
+  
+  mp <- map.feature(lang.gltc(fe_vill$gltc_lang),
+                    latitude = fe_vill$lat, 
                     longitude = fe_vill$lon,
-                    features = fe_vill$lang, # color feature = language
-                    color = fe_vill$lang_color,
-                    stroke.features = fe_vill$value, # stroke.feature = your feature value
-                    stroke.color = c("black", "white"),
+                    features = fe_vill$default_level,
+                    color = fe_vill$lang_col,
+                    legend = F,
                     label = fe_vill$lang,
-                    zoom.control = T,
-                    popup = paste("<b>Village:</b>", fe_vill$village, "<br>",
-                                  "<b>Source:</b>", fe_vill$source, fe_vill$page, "<br>",
-                                  "<b>Datapoint:</b>", fe_vill$datapoint),
-                    width = 3,
-                    stroke.radius = 8,
-                    legend = FALSE)
+                    stroke.features = as.factor(fe_vill$value),
+                    stroke.color = "magma",
+                    stroke.title = unique(fe_vill$value_name),
+                    zoom.control = TRUE)
   
   return(mp)
 }
 
 gen_map <- function(fe) {
-  vill <- read_csv("./data/villages.csv") # villages dataset
-  meta <- read_tsv("./data/meta.csv") # language metadata and colors
+  return_list <- data_prep(fe)
+  fe_simple <- return_list$fe_simple
   
-  # preparation of data
-  vill <- vill[complete.cases(vill$lat),] # remove villages for which we do not have coordinates (yet)
-  vill <- vill %>% 
-    filter(kutans == 'FALSE')  # убирает кутаны
-  
-  meta_core <- meta %>% # remove idioms not (yet) recognized as distinct
-    filter(core == "yes")
-  
-  vill_meta <- merge(vill, meta_core, by = "lang") # merge villages and coordinates with language metadata
-  vill_meta <- vill_meta %>% 
-    mutate(idiom = idiom.y)  # почему там два разных идиома?
-  
-  fe_vill <- merge(vill_meta, fe, by = "lang") # merge villages, coordinates, and language metadata with feature information
-  fe_vill$datapoint <- "extrapolated datapoint"
-  
-  # filter core languages
-  core_meta <- meta %>%
-    filter(core == "yes")
-  core_data <- left_join(core_meta, fe, by = "lang")
-  core_data$datapoint <- "general datapoint"
-  
-  # draw a map
- mp <- map.feature(lang.gltc(core_data$glottocode),
-              latitude = core_data$gen_lat,  # gltc_lat
-              longitude = core_data$gen_lon,  # gltc_lon
-              features = core_data$lang, # color feature = language
-              color = core_data$lang_color,
-              stroke.features = core_data$value, # stroke.feature = your feature value
-              stroke.color = c("black", "white"),
-              label = core_data$lang,
-              zoom.control = T,
-              popup = paste("<b>Source:</b>", core_data$source, core_data$page, "<br>",
-                            "<b>Datapoint:</b>", core_data$datapoint),
-              width = 3, stroke.radius = 8,
-              legend = FALSE)
+  mp <- map.feature(lang.gltc(fe_simple$gltc_lang),
+                    latitude = fe_simple$lat,
+                    longitude = fe_simple$lon, 
+                    features = fe_simple$default_level,
+                    color = fe_simple$lang_col,
+                    legend = F,
+                    label = fe_simple$lang,
+                    stroke.features = fe_simple$value, 
+                    stroke.color = "magma", 
+                    stroke.title = unique(fe_simple$value_name),
+                    zoom.control = TRUE)
  return(mp)
 }
 
+gen_map_byfe <- function(fe) {
+  return_list <- data_prep(fe)
+  fe_simple <- return_list$fe_simple
+  
+  mp <- map.feature(lang.gltc(fe_simple$gltc_lang),
+                    features = as.factor(fe_simple$value),
+                    title = unique(fe_simple$value_name),
+                    color = "magma",
+                    label = fe_simple$lang,
+                    zoom.control = T)
+  return(mp)
+}
+
 d_b <- function(fe, col_names) {
-  meta <- read_tsv("./data/meta.csv") # language metadata and colors
-  # preparation of data
-  meta <- meta %>%
-    filter(core == "yes") %>% 
-    select(lang, family, aff)
-  fe <- left_join(meta, fe, by = "lang")
-  fe <- fe %>% 
+  return_list <- data_prep(fe)
+  fe_vill <- return_list$fe_vill
+  
+  fe_vill <- fe_vill %>% 
+    filter(map == "yes") %>% 
     mutate(aff = factor(aff)) %>% 
     mutate(family = factor(family))
   
   # select which feature data you want to show in the datatable
-  dtable <- fe %>%
+  dtable <- fe_vill %>%
     select(col_names)
   cit <- vector("character", length(dtable$source))
   for (i in seq_along(dtable$source))
@@ -120,7 +208,7 @@ d_b <- function(fe, col_names) {
                       filter = "top",
                       escape = FALSE,
                       rownames = FALSE,
-                      extensions = 'Buttons',  # buttons
+                      extensions = c('Buttons', 'FixedColumns'),  # buttons
                       options = list(
                         pageLength = 5,  # columnDefs = list(list(searchable = FALSE, targets = 0)),
                         paging = TRUE,
@@ -128,6 +216,7 @@ d_b <- function(fe, col_names) {
                         fixedColumns = TRUE,
                         ordering = TRUE,
                         dom = 'fBltpi',  # add map-lang-link button, fff
+                        scrollX = TRUE,
                         buttons = list(list(
                         extend = 'collection',
                         buttons = c('csv', 'excel', 'pdf'),

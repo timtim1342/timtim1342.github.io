@@ -1,15 +1,15 @@
-id	title	author	area	major_topic	filename
-1	Number of agreement classes	Inga Kartozia	Morphology	Classes	classes
-2	Presence of Affective	Denis Arsentjev	Morphology		affective
-3	Evidentiality as part of the tense system	Samira Verhees	Morphology	Evidentiality	evidentiality_tense
-4	Gemination	George Moroz, Violetta Ivanova	Phonology	Phonology	gemination
-5	System of laterals	George Moroz, Violetta Ivanova	Phonology	Phonology	laterals
-6	Presence of voiced uvular stop	George Moroz, Violetta Ivanova	Phonology	Phonology	voiced_uvular
-7	Presence of nasalization	George Moroz, Violetta Ivanova	Phonology	Phonology	nasalization
-8	Presence of pharyngealization	George Moroz, Violetta Ivanova	Phonology	Phonology	pharyngealization
-9	Elevation in the demonstrative system	Timofey Mukhin	Nominal Categories	Demonstratives	elevation
-10	Distance contrasts expressed by demonstratives	Timofey Mukhin	Nominal Categories	Demonstratives	distance_contrasts
-11	Types of demonstrative systems	Timofey Mukhin	Nominal Categories	Demonstratives	types_of_demonstrative_systems
-12	Standard of comparison	Chiara Naccarato	Morphology		standard_of_comparison
-13	Perfect	Samira Verhees	Morphology	Evidentiality	perfect
-14	Particles of reported speech and inference	Samira Verhees	Morphology	Evidentiality	particles
+id	title	author	area	major_topic	filename	filename_backup
+1	Number of agreement classes	Inga Kartozia	Morphology	Classes	in progress	classes
+2	Presence of Affective	Denis Arsentjev	Morphology		in progress	affective
+3	Evidentiality as part of the tense system	Samira Verhees	Morphology	Evidentiality	evidentiality_tense	
+4	Gemination	George Moroz, Violetta Ivanova	Phonology	Phonology	in progress	gemination
+5	System of laterals	George Moroz, Violetta Ivanova	Phonology	Phonology	in progress	laterals
+6	Presence of voiced uvular stop	George Moroz, Violetta Ivanova	Phonology	Phonology	in progress	voiced_uvular
+7	Presence of nasalization	George Moroz, Violetta Ivanova	Phonology	Phonology	in progress	nasalization
+8	Presence of pharyngealization	George Moroz, Violetta Ivanova	Phonology	Phonology	in progress	pharyngealization
+9	Elevation in the demonstrative system	Timofey Mukhin	Nominal Categories	Demonstratives	elevation	
+10	Distance contrasts expressed by demonstratives	Timofey Mukhin	Nominal Categories	Demonstratives	distance_contrasts	
+11	Types of demonstrative systems	Timofey Mukhin	Nominal Categories	Demonstratives	types_of_demonstrative_systems	
+12	Standard of comparison	Chiara Naccarato	Morphology		standard_of_comparison	
+13	Perfect	Samira Verhees	Morphology	Evidentiality	perfect	
+14	Particles of reported speech and inference	Samira Verhees	Morphology	Evidentiality	particles	
