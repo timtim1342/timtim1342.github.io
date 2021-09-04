@@ -117,9 +117,11 @@ ubiralka_map <- function(fe) {  # карта с убиралкой
                    label = alldata_clean$lang.x,
                    color = "magma",
                    popup = paste(alldata_clean$village, "|", alldata_clean$rus_village, "<br>",
-                                 "data:", alldata_clean$granularity),
+                                 "data:", alldata_clean$granularity, "<br>",
+                                 "value:", alldata_clean$value),
                    control = alldata_clean$granularity,
-                   zoom.control = T)
+                   zoom.control = T,
+                   legend.position = 'bottomleft')
   
   return(mp)
 }
@@ -138,7 +140,11 @@ extr_map <- function(fe) {
                     stroke.features = as.factor(fe_vill$value),
                     stroke.color = "magma",
                     stroke.title = unique(fe_vill$value_name),
-                    zoom.control = TRUE)
+                    popup = paste(fe_vill$village, "|", fe_vill$rus_village, "<br>",
+                                  "data:", 'extrapolated datapoin', "<br>",
+                                  "value:", fe_vill$value),
+                    zoom.control = TRUE,
+                    legend.position = 'bottomleft')
   
   return(mp)
 }
@@ -157,7 +163,11 @@ gen_map <- function(fe) {
                     stroke.features = fe_simple$value, 
                     stroke.color = "magma", 
                     stroke.title = unique(fe_simple$value_name),
-                    zoom.control = TRUE)
+                    popup = paste(fe_simple$village, "|", fe_simple$rus_village, "<br>",
+                                  "data:", 'general datapoin', "<br>",
+                                  "value:", fe_simple$value),
+                    zoom.control = TRUE,
+                    legend.position = 'bottomleft')
  return(mp)
 }
 
@@ -170,21 +180,25 @@ gen_map_byfe <- function(fe) {
                     title = unique(fe_simple$value_name),
                     color = "magma",
                     label = fe_simple$lang,
-                    zoom.control = T)
+                    popup = paste(fe_simple$village, "|", fe_simple$rus_village, "<br>",
+                                  "data:", 'general datapoin', "<br>",
+                                  "value:", fe_simple$value),
+                    zoom.control = T,
+                    legend.position = 'bottomleft')
   return(mp)
 }
 
 d_b <- function(fe, col_names) {
-  return_list <- data_prep(fe)
-  fe_vill <- return_list$fe_vill
-  
-  fe_vill <- fe_vill %>% 
-    filter(map == "yes") %>% 
-    mutate(aff = factor(aff)) %>% 
-    mutate(family = factor(family))
+  # return_list <- data_prep(fe)
+  # fe_vill <- return_list$fe_vill
+  # 
+  # fe_vill <- fe_vill %>% 
+  #   filter(map == "yes") %>% 
+  #   mutate(aff = factor(aff)) %>% 
+  #   mutate(family = factor(family))
   
   # select which feature data you want to show in the datatable
-  dtable <- fe_vill %>%
+  dtable <- fe %>%
     select(col_names)
   cit <- vector("character", length(dtable$source))
   for (i in seq_along(dtable$source))
