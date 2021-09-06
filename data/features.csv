@@ -1,6 +1,6 @@
 id	title	author	area	major_topic	filename	filename_backup
-1	Number of agreement classes	Inga Kartozia	Morphology	Classes	in progress	classes
-2	Presence of Affective	Denis Arsentjev	Morphology		in progress	affective
+1	Number of agreement classes	Inga Kartozia, Chiara Naccarato	Morphology	Classes	classes	
+2	Presence of Affective	Denis Arsentjev, Samira Verhees	Morphology		affective	
 3	Evidentiality as part of the tense system	Samira Verhees	Morphology	Evidentiality	evidentiality_tense	
 4	Gemination	George Moroz, Violetta Ivanova	Phonology	Phonology	in progress	gemination
 5	System of laterals	George Moroz, Violetta Ivanova	Phonology	Phonology	in progress	laterals
@@ -13,3 +13,9 @@ id	title	author	area	major_topic	filename	filename_backup
 12	Standard of comparison	Chiara Naccarato	Morphology		standard_of_comparison	
 13	Perfect	Samira Verhees	Morphology	Evidentiality	perfect	
 14	Particles of reported speech and inference	Samira Verhees	Morphology	Evidentiality	particles	
+15	Morning greetings	Chiara Naccarato, Samira Verhees	Lexicon		morning_greetings	
+16	Ordinal numerals	Polina Nasledskova, Ivan Netkachev	Lexicon		ordinals	
+17	Comitative	Sara Zadykian, Chiara Naccarato	Morphology		comitative	
+18	Caritives (adverbial)	Anastasia Panova	Morphology		in progress	caritives_adv
+19	Caritives (attributive)	Anastasia Panova	Morphology		in progress	caritives_attr
+20	Preverbs	Evgeniya Klyagina	Morphology		preverbs	
