@@ -3,7 +3,7 @@ library(bib2df)
 library(stringi)
 
 # make as a function!
-lib <- read_tsv("./data/biblib.csv")  # file from the drive 
+lib <- read_tsv("./data/biblib.tsv")  # file from the drive 
 
 # add eng_transl to title
 lib %>%
@@ -12,8 +12,10 @@ lib %>%
   select(-c(comment, contributor, booktitle_translation, title_translation))-> lib
 
 lib %>%
-  mutate(author = gsub(' и ', ' and ', author)) %>% 
-  mutate(editor = gsub(' и ', ' and ', editor))-> lib  # see references.Rmd
+  mutate(author = gsub(' и ', ' & ', author)) %>% 
+  mutate(editor = gsub(' и ', ' & ', editor)) %>% 
+  mutate(author = gsub(' and ', ' & ', author)) %>% 
+  mutate(author = gsub(' and ', ' & ', author)) -> lib  # see references.Rmd
 
 # translit (method in progress)
 # a = c()
@@ -34,5 +36,5 @@ lib %>%
  
 
 df2bib(lib, "./data/bibliography.bib")
-write_tsv(lib, "./data/biblib.csv")  # temporal solution 
+write_tsv(lib, "./data/biblib.tsv")  # temporal solution 
 

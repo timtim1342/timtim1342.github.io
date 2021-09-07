@@ -16,6 +16,7 @@ id	title	author	area	major_topic	filename	filename_backup
 15	Morning greetings	Chiara Naccarato, Samira Verhees	Lexicon		morning_greetings	
 16	Ordinal numerals	Polina Nasledskova, Ivan Netkachev	Lexicon		ordinals	
 17	Comitative	Sara Zadykian, Chiara Naccarato	Morphology		comitative	
-18	Caritives (adverbial)	Anastasia Panova	Morphology		in progress	caritives_adv
-19	Caritives (attributive)	Anastasia Panova	Morphology		in progress	caritives_attr
+18	Caritives (adverbial)	Anastasia Panova	Morphology		caritives_adv	
+19	Caritives (attributive)	Anastasia Panova	Morphology		caritives_attr	
 20	Preverbs	Evgeniya Klyagina	Morphology		preverbs	
+21	Optatives	Nina Dobrushina	Morphology		optatives	
